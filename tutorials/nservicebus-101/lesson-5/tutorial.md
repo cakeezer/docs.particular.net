@@ -70,7 +70,7 @@ Once a message is sent to the error queue, this indicates that a systemic failur
 
 For this reason, NServiceBus embeds the exception details and stack trace into the message that it forwards to the error queue, so you don't need to search through a log file to find the details. Once the underlying issue is fixed, the message can be replayed. **Replaying a message** sends it back to its original queue in order to retry message processing after an issue has been fixed.
 
-The [Particular Service Platform](/platform/), of which NServiceBus is a part, includes tools to make this kind of operational monitoring really easy. If you used the [Particular Platform Installer](/platform/installer/) to install MSMQ, you should already have these at your disposal:
+The [Particular Service Platform](/platform/), of which NServiceBus is a part, includes tools to make this kind of operational monitoring really easy. If you used the [Particular Platform Installer](/platform/installer/), you should already have these at your disposal:
 
  * [ServiceControl](/servicecontrol/) is like a watchdog monitoring your system, sucking in information and making that available to other tools via a REST API. One of its functions is to monitor your error queue so that you can act on the poison messages that arrive there.
  * [ServicePulse](/servicepulse/) is a web application aimed to be an operational dashboard for your NServiceBus system. It allows you to see failed messages, including the exception details, and provides a UI to either replay or archive failed messages.
@@ -157,7 +157,7 @@ Notice how much faster the message proceeds through delayed retries, because ins
 
 ### Replay a message
 
-If you used the [Particular Platform Installer](/platform/installer/) to install MSMQ, you should already have the [ServiceControl](/servicecontrol/) and [ServicePulse](/servicepulse/) tools installed. You may want to re-run the Platform Installer and ensure that the checkboxes for ServiceControl and ServicePulse are already checked, and install them if necessary.
+If you used the [Particular Platform Installer](/platform/installer/), you should already have the [ServiceControl](/servicecontrol/) and [ServicePulse](/servicepulse/) tools installed. You may want to re-run the Platform Installer and ensure that the checkboxes for ServiceControl and ServicePulse are already checked, and install them if necessary.
 
 {{NOTE:
 ServiceControl is installed as a Windows service named **Particular ServiceControl** and has no user interface. It exposes a web API at `http://localhost:33333/api` when [default settings are used](/servicecontrol/creating-config-file.md#host-settings). The API is used to serve information to the [ServicePulse](/servicepulse/) and [ServiceInsight](/serviceinsight/) tools.
