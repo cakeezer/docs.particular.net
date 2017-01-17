@@ -28,9 +28,9 @@ namespace Core_6
     {
         void Setup(EndpointConfiguration endpointConfiguration)
         {
+            #region RegisterPublisher
             var transport = endpointConfiguration.UseTransport<SqlServerTransport>();
 
-            #region RegisterPublisher
             var routing = transport.Routing();
             routing.RegisterPublisher(typeof(SomethingHappened), "PublisherEndpoint");
             #endregion
@@ -42,9 +42,6 @@ namespace Core_6
 
             #region BillingRouting
             var routing = transport.Routing();
-            #endregion
-
-            #region OrderPlacedPublisher
             routing.RegisterPublisher(typeof(OrderPlaced), "Sales");
             #endregion
         }
